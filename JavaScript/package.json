@@ -1,0 +1,18 @@
+{
+  "name": "CadastroUsuarioAPI",
+  "version": "0.0.1",
+  "description": "API REST de cadastro de usuários e login",
+  "main": "index.js",
+  "author": "Arthur Torres",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "knex": "^3.1.0",
+    "nodemon": "^3.1.0",
+    "pg": "^8.11.5"
+  }
+}

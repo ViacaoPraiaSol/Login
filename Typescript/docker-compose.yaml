@@ -1,0 +1,26 @@
+services:
+  backend:
+    build: ./Backend
+    ports:
+      - 8001:8001
+    environment:
+      - DB_USER=postgres
+      - DB_PASS=admin
+      - DB_NAME=DB_usuarioApi
+      - DB_HOST=db
+
+    volumes:
+      - ./Backend:/app-backend
+    
+    container_name: WebAPI_backend
+    restart: always
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    ports:
+      - 3306:3306
+    environment:
+      - POSTGRES_ROOT_PASSWORD=admin
+    restart: always
