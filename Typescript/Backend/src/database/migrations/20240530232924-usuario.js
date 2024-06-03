@@ -2,6 +2,7 @@
 
 const { DataTypes } = require('sequelize');
 
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -26,10 +27,10 @@ module.exports = {
         allowNull: false,
       },
       tipo_id: {
-        type: DataTypes.UUID,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'tipo_usuario',
+          model: 'tipo',
           key: 'id'
         }
       }
@@ -40,4 +41,6 @@ module.exports = {
   async down (queryInterface, Sequelize) {
     await queryInterface.dropTable('usuario')
   }
+
+
 };

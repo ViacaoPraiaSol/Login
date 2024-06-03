@@ -1,12 +1,14 @@
 import { DataTypes, Model } from "sequelize";
 import db from '.'
 import sequelize from "sequelize";
+import TipoUsuario from "./TipoUsuario";
 
 class Usuario extends Model {
   declare id: string
-  declare nome_usuario: string
+  declare nomeUsuario: string
   declare email: string
   declare senha: string
+  declare tipoId: number
 
 }
 
@@ -15,9 +17,10 @@ Usuario.init({
     type: DataTypes.UUID,
     primaryKey: true,
     defaultValue: DataTypes.UUIDV4,
+    //autoIncrement: true,
     allowNull: false,
   },
-  nome_usuario: {
+  nomeUsuario: {
     type: sequelize.STRING,
     allowNull: false,
   },
@@ -30,14 +33,25 @@ Usuario.init({
     type: sequelize.STRING,
     allowNull: false,
   },
-  tipo_id: {
-    type: DataTypes.UUID,
+  tipoId: {
+    type: sequelize.INTEGER,
     allowNull: false,
     references: {
-      model: 'tipo_usuario',
+      model: 'tipo',
       key: 'id'
     }
   }
 }, {
-  sequelize: db
+  sequelize: db,
+  tableName: 'usuario',
+  timestamps: false,
+  underscored: true,
 })
+
+TipoUsuario.hasMany(Usuario, {
+  foreignKey: 'tipoId',
+  //as: 'permit'
+});
+
+
+export default Usuario;
