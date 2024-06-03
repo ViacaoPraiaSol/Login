@@ -3,22 +3,28 @@ import db from '.'
 import sequelize from "sequelize";
 
 class TipoUsuario extends Model {
-  declare id: String
-  declare nome_tipo: String
+  declare id: number
+  declare nomeTipo: String
 }
 
 TipoUsuario.init({
   id: {
-    type: DataTypes.UUID,
+    type: sequelize.INTEGER,
     primaryKey: true,
-    defaultValue: DataTypes.UUIDV4,
-    
+    autoIncrement: true,
     allowNull: false,
   },
-  nome_tipo: {
+  nomeTipo: {
     type: sequelize.STRING,
     allowNull: false,
   }
 }, {
-  sequelize: db
+  sequelize: db,
+  tableName: 'tipo',
+  timestamps: false,
+  underscored: true,
+
 })
+
+
+export default TipoUsuario;
