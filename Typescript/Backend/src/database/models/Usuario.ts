@@ -8,7 +8,7 @@ class Usuario extends Model {
   declare nomeUsuario: string
   declare email: string
   declare senha: string
-  declare tipoId: number
+  declare tipoUsuarioId: number
 
 }
 
@@ -33,11 +33,10 @@ Usuario.init({
     type: sequelize.STRING,
     allowNull: false,
   },
-  tipoId: {
+  tipoUsuarioId: {
     type: sequelize.INTEGER,
-    allowNull: false,
     references: {
-      model: 'tipo',
+      model: 'tipo_usuario',
       key: 'id'
     }
   }
@@ -49,7 +48,7 @@ Usuario.init({
 })
 
 TipoUsuario.hasMany(Usuario, {
-  foreignKey: 'tipoId',
+  foreignKey: 'tipoUsuarioId',
   //as: 'permit'
 });
 
