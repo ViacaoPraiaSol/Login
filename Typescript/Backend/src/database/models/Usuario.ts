@@ -47,10 +47,12 @@ Usuario.init({
   underscored: true,
 })
 
-TipoUsuario.hasMany(Usuario, {
-  foreignKey: 'tipoUsuarioId',
-  //as: 'permit'
-});
+Usuario.belongsTo(TipoUsuario, {
+  foreignKey: 'tipoUsuarioId'
+})
 
+TipoUsuario.hasMany(Usuario, {
+  foreignKey: 'tipoUsuarioId'
+})
 
 export default Usuario;

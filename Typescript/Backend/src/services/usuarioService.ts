@@ -10,11 +10,18 @@ import schema from "./validations/schema";
 class UsuarioService {
   private model: ModelStatic<Usuario> = Usuario;
 
-  async get() {
-    const usuarios = await this.model.findAll({
-      //include: { model: TipoUsuario, as: 'permit' }
-    })
-    return resp(200, usuarios)
+  async get(user?: string) {
+    const config = { include: [{ model: TipoUsuario }] }
+    if(user){
+      const usuarios = await this.model.findAll({
+        where: { id: user},
+        ...config
+      })
+      
+      return resp(200, usuarios)
+    }
+    
+    return resp(200, await this.model.findAll(config))
   }
   
   async create(usuario: iUsuario) {
