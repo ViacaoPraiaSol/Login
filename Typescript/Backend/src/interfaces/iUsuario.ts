@@ -3,7 +3,7 @@ interface iUsuario {
   nomeUsuario: string
   email: string
   senha: string
-  tipoId: number
+  tipoUsuarioId: number
 
 }
 

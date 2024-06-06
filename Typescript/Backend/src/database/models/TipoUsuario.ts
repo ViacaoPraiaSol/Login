@@ -20,7 +20,7 @@ TipoUsuario.init({
   }
 }, {
   sequelize: db,
-  tableName: 'tipo',
+  tableName: 'tipo_usuario',
   timestamps: false,
   underscored: true,
 
