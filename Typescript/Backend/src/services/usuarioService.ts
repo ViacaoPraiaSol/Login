@@ -35,12 +35,14 @@ class UsuarioService {
   }
 
   
-  async delete(id: string) { 
+  async delete(user: string) { 
 
-    const usuario = await Usuario.findOne({ where: {id}})
+    const usuario = await this.model.findOne({
+      where: {id: user}
+    })
     await usuario!.destroy()
 
-      return resp(201, usuario)
+    return resp(204, usuario)
   }
   
 }

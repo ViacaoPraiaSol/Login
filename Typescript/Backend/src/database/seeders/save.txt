@@ -1,0 +1,68 @@
+[
+  {
+    "id": "45cbd619-e84e-457b-8e3d-4aed29a3df10",
+    "nomeUsuario": "Arthur",
+    "email": "arthurjtorres@outlook.com.br",
+    "senha": "aa1bf4646de67fd9086cf6c79007026c",
+    "tipoUsuarioId": 1,
+    "TipoUsuario": {
+      "id": 1,
+      "nomeTipo": "admin"
+    }
+  },
+  {
+    "id": "25ea6de2-1063-4bc6-9140-d8d87cdfacf8",
+    "nomeUsuario": "maria",
+    "email": "maria@hotmail.com",
+    "senha": "aa1bf4646de67fd9086cf6c79007026c",
+    "tipoUsuarioId": 2,
+    "TipoUsuario": {
+      "id": 2,
+      "nomeTipo": "user"
+    }
+  },
+  {
+    "id": "39198a25-8179-45fa-b7f1-d549b3fe0f79",
+    "nomeUsuario": "joão",
+    "email": "joao@hotmail.com",
+    "senha": "aa1bf4646de67fd9086cf6c79007026c",
+    "tipoUsuarioId": 2,
+    "TipoUsuario": {
+      "id": 2,
+      "nomeTipo": "user"
+    }
+  },
+  {
+    "id": "3cf67b29-2b9e-46f6-8879-a9a0bd3518c2",
+    "nomeUsuario": "teste3",
+    "email": "testes3@outlook.com.br",
+    "senha": "aa1bf4646de67fd9086cf6c79007026c",
+    "tipoUsuarioId": 2,
+    "TipoUsuario": {
+      "id": 2,
+      "nomeTipo": "user"
+    }
+  },
+  {
+    "id": "6730b0fb-2f12-4400-9dce-1c568aaca993",
+    "nomeUsuario": "teste",
+    "email": "testes@outlook.com.br",
+    "senha": "aa1bf4646de67fd9086cf6c79007026c",
+    "tipoUsuarioId": 2,
+    "TipoUsuario": {
+      "id": 2,
+      "nomeTipo": "user"
+    }
+  },
+  {
+    "id": "a05b7d64-1d6d-4e1e-a9c4-fe727e8a3c71",
+    "nomeUsuario": "teste2",
+    "email": "testes2@outlook.com.br",
+    "senha": "aa1bf4646de67fd9086cf6c79007026c",
+    "tipoUsuarioId": 3,
+    "TipoUsuario": {
+      "id": 3,
+      "nomeTipo": "superuser"
+    }
+  }
+]

@@ -6,5 +6,7 @@ const tipoUserRouter = Router()
 
 tipoUserRouter.get('/tipoUser', controller.get.bind(controller))
 
+tipoUserRouter.post('/tipoUser', controller.create.bind(controller))
+
 
 export default tipoUserRouter
