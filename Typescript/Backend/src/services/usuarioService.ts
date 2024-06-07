@@ -11,10 +11,12 @@ class UsuarioService {
   private model: ModelStatic<Usuario> = Usuario;
 
   async get(id?: string) {
-    const config = { include: [{ model: TipoUsuario }] }
+    const config = {
+      include: [{ model: TipoUsuario }],
+      attributes: { exclude: ['tipoUsuarioId'] }
+    }
     if(id){
       const usuario = await this.model.findOne({
-        attributes: {exclude: [ 'tipoUsuarioId']},
         where: { id },
         ...config
       })
@@ -29,19 +31,17 @@ class UsuarioService {
   
   async create(usuario: iUsuario) {
     const { error } = schema.usuario.validate(usuario)
-    
     const hashPassword = md5(usuario.senha)
     usuario.id = v4() 
     const createdUsuario = await this.model.create({ ...usuario, senha: hashPassword})
 
-      return resp(201, createdUsuario)
+    return resp(201, createdUsuario)
   }
 
   
-  async delete(user: string) { 
-
+  async delete(id: string) { 
     const usuario = await this.model.findOne({
-      where: {id: user}
+      where: {id}
     })
     await usuario!.destroy()
 

@@ -26,6 +26,16 @@ class TipoUserService {
     return resp(201, createTipoUsuario)
   }
 
+  async delete(id: number) {
+    const tipo = await this.model.findByPk(id)
+
+    if (!tipo) {
+      return resp(404, { error: 'Tipo de usuário não encontrado' });
+    }
+    await tipo.destroy()
+    return resp(202, { message: 'Tipo de usuário deletado com sucesso'})
+  }
+
 }
 
 
