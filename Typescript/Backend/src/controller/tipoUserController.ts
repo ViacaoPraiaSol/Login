@@ -6,7 +6,8 @@ class TipoUserController {
 
   async get(req: Request, res: Response, next: NextFunction) {
     try {
-      const { status, message } = await this.service.get(req.body)
+      const { id } = req.body
+      const { status, message } = await this.service.get(+id)
       res.status(status).json(message)
     } catch (error) {
       next(error)

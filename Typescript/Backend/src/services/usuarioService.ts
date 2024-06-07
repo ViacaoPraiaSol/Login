@@ -10,17 +10,20 @@ import schema from "./validations/schema";
 class UsuarioService {
   private model: ModelStatic<Usuario> = Usuario;
 
-  async get(user?: string) {
+  async get(id?: string) {
     const config = { include: [{ model: TipoUsuario }] }
-    if(user){
-      const usuarios = await this.model.findAll({
-        where: { id: user},
+    if(id){
+      const usuario = await this.model.findOne({
+        attributes: {exclude: [ 'tipoUsuarioId']},
+        where: { id },
         ...config
       })
-      
-      return resp(200, usuarios)
+      if (!usuario) {
+        return resp(404, { error: 'Usuário não encontrado' })
+      }
+      return resp(200, usuario)
     }
-    
+     
     return resp(200, await this.model.findAll(config))
   }
   
