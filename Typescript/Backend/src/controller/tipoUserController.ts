@@ -22,6 +22,19 @@ class TipoUserController {
       next(error)
     }
   }
+
+  // Método delete passando os dados no body
+  async delete(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { id } = req.body
+      const { status, message } = await this.service.delete(+id)
+      res.status(status).json(message)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  
 }
 
 export default TipoUserController
