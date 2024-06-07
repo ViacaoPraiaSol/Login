@@ -17,6 +17,7 @@ class UsuarioService {
     }
     if(id){
       const usuario = await this.model.findOne({
+
         where: { id },
         ...config
       })
