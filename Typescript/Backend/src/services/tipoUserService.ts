@@ -7,17 +7,15 @@ import schema from "./validations/schema";
 class TipoUserService {
   private model: ModelStatic<TipoUsuario> = TipoUsuario
 
-  async get(number?: number) {
-    if (number) {
-      const tipos = await this.model.findAll({
-        where: { id: number },
-        attributes: ['iTipoUsuario.id'],
-        raw: true,
-        subQuery: false
-      })
-      return resp(200, tipos)
+  async get(id?: number) {
+    if (id) {
+      const tipo = await this.model.findByPk(id)
+      if (!tipo) {
+        return resp (404, { error: 'Tipo de usuário não encontrado' })
+      }
+      return resp(200, tipo)
     }
-    return resp(200, await this.model.findAll())
+    return resp(202, await this.model.findAll())
   }
   
   async create(tipoUsuario: iTipoUsuario) {
