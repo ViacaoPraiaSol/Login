@@ -11,10 +11,13 @@ class UsuarioService {
   private model: ModelStatic<Usuario> = Usuario;
 
   async get(id?: string) {
-    const config = { include: [{ model: TipoUsuario }] }
+    const config = {
+      include: [{ model: TipoUsuario }],
+      attributes: { exclude: ['tipoUsuarioId'] }
+    }
     if(id){
       const usuario = await this.model.findOne({
-        attributes: {exclude: [ 'tipoUsuarioId']},
+        
         where: { id },
         ...config
       })
