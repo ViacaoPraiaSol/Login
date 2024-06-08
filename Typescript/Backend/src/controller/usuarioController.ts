@@ -36,13 +36,21 @@ class UsuarioController {
 
   async delete(req: Request, res: Response, next: NextFunction) {
     try {
-      const { status, message } = await this.service.delete(req.body)
+      const { id } = req.body
+      const { status, message } = await this.service.delete(id)
       res.status(status).json(message)
     } catch (error) {
       next(error)
     }
   }
 
+  async update(req: Request, res: Response, next: NextFunction) {
+    try {     
+      const { status, message } = await this.service.update(req.body)      
+    } catch (error) {
+      next(error)
+    }
+  }
 
 }
 

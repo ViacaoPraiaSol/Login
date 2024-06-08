@@ -41,12 +41,32 @@ class UsuarioService {
 
   
   async delete(id: string) { 
-    const usuario = await this.model.findOne({
-      where: {id}
-    })
-    await usuario!.destroy()
+    const usuario = await this.model.findByPk(id)
+    if (!usuario) {
+      return resp(404, { error: 'Usuário não Encontrado'})
+    }
 
-    return resp(204, usuario)
+    await usuario.destroy()
+
+    return resp(202, {message: 'Usuário deletado com sucesso'})
+  }
+
+  async update(usuario: iUsuario) {
+    const { error } = schema.usuario.validate(usuario)
+
+    if (error) {
+      return resp(400, { error: error.details[0].message })
+    }
+
+    const { id, ...updateData} = usuario
+    const user = await this.model.findByPk(id)
+    if (!user){
+      return resp(404, { error: 'Usuário não Encontrado'})
+    }
+
+    await user.update(updateData)
+    return resp(200, user)
+
   }
   
 }
