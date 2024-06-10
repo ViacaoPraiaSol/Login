@@ -6,6 +6,7 @@ import iUsuario from "../interfaces/iUsuario";
 import md5 from "md5";
 import { v4 } from "uuid";
 import schema from "./validations/schema";
+import attUsuario from "../interfaces/attUsuario";
 
 class UsuarioService {
   private model: ModelStatic<Usuario> = Usuario;
@@ -51,7 +52,7 @@ class UsuarioService {
     return resp(202, {message: 'Usuário deletado com sucesso'})
   }
 
-  async update(usuario: iUsuario) {
+  async update(usuario: attUsuario) {
     const { error } = schema.usuario.validate(usuario)
 
     if (error) {

@@ -10,6 +10,6 @@ usuarioRouter.post('/usuario', controller.create.bind(controller))
 
 usuarioRouter.delete('/usuario', controller.delete.bind(controller))
 
-usuarioRouter.put('/usuario', controller.update.bind(controller))
+usuarioRouter.patch('/usuario', controller.update.bind(controller))
 
 export default usuarioRouter
