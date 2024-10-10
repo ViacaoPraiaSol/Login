@@ -8,6 +8,7 @@ const banco = knex({
     password: 'admin',
     database: 'DB_teste',
   },
+  
 });
 
 export default banco;
