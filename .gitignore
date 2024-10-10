@@ -1,1 +1,2 @@
-Typescript/Backend/node_modules/*
+/Typescript/Backend/build
+/Typescript/Backend/node_modules
